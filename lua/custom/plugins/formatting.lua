@@ -1,0 +1,58 @@
+---@module 'lazy'
+---@type LazySpec
+return {
+  "stevearc/conform.nvim",
+  event = { "BufWritePre" },
+  cmd = { "ConformInfo" },
+  keys = {
+    {
+      "<leader>f",
+      function()
+        require("conform").format { async = true }
+      end,
+      desc = "[F]ormat buffer",
+    },
+  },
+  opts = {
+    formatters_by_ft = {
+      lua = { "stylua" },
+      go = { "goimports-reviser" },
+      javascript = { "prettierd", "prettier" },
+      typescript = { "prettierd", "prettier" },
+      javascriptreact = { "prettierd", "prettier" },
+      typescriptreact = { "prettierd", "prettier" },
+      html = { "prettierd", "prettier" },
+      css = { "prettierd", "prettier" },
+      json = { "prettierd", "prettier" },
+      astro = { "prettierd", "prettier" },
+      bash = { "shfmt" },
+      sh = { "shfmt" },
+      zsh = { "shfmt" },
+      rust = { "rustfmt" },
+    },
+
+    default_format_opts = {
+      lsp_format = "fallback",
+    },
+
+    format_after_save = function(bufnr)
+      local ignore_filetypes = { "php", "sql", "java" }
+      if vim.tbl_contains(ignore_filetypes, vim.bo[bufnr].filetype) then
+        return
+      end
+
+      local bufname = vim.api.nvim_buf_get_name(bufnr)
+      if bufname:match "/node_modules/" then
+        return
+      end
+
+      return { async = true, timeout_ms = 2500, lsp_format = "fallback" }
+    end,
+
+    formatters = {
+      shfmt = {
+        prepend_args = { "-i", "2" },
+      },
+    },
+  },
+}
