@@ -20,4 +20,4 @@ These are required so Mason can install/maintain formatters and language tooling
 
 ## Optional but recommended
 
-- `fzf`/`zf (can also be used with Telescope/fzf/zf workflows alongside `telescope-fzf-native`/`telescope-zf-native`)
+- `fzf`/`zf` (can also be used with Telescope/fzf/zf workflows alongside `telescope-fzf-native`/`telescope-zf-native`)
