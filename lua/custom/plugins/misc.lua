@@ -4,6 +4,11 @@ return {
   { "tpope/vim-vinegar" },
   { "NMAC427/guess-indent.nvim", opts = {} },
   {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = true,
+  },
+  {
     "MeanderingProgrammer/render-markdown.nvim",
     ft = "markdown",
     dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
