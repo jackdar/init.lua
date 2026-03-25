@@ -38,6 +38,7 @@ return {
     }
 
     -- pcall(require("telescope").load_extension, "fzf")
+    pcall(require("telescope").load_extension, "rest")
     pcall(require("telescope").load_extension, "zf-native")
     pcall(require("telescope").load_extension, "ui-select")
 
@@ -90,5 +91,9 @@ return {
     vim.keymap.set("n", "<leader>fn", function()
       builtin.find_files { cwd = vim.fn.stdpath "config" }
     end, { desc = "[F]ind [N]eovim files" })
+
+    vim.keymap.set("n", "<leader>fe", function()
+      require("telescope").extensions.rest.select_env()
+    end, { desc = "[F]ind REST [e]nvironment" })
   end,
 }

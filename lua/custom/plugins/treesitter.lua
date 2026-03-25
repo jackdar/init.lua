@@ -5,6 +5,16 @@ return {
   lazy = false,
   build = ":TSUpdate",
   branch = "main",
+  dependencies = {
+    {
+      "nvim-treesitter/nvim-treesitter-context",
+      ---@module 'treesitter-context'
+      ---@type Config
+      opts = {
+        max_lines = 4,
+      },
+    },
+  },
   config = function()
     local parsers = {
       "angular",
