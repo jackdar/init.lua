@@ -53,8 +53,13 @@ return {
         documentation = { auto_show = true, auto_show_delay_ms = 500 },
       },
       sources = {
-        default = { "lsp", "path", "snippets", "copilot" },
+        default = { "lsp", "path", "snippets", "buffer", "copilot" },
+        per_filetype = {
+          sql = { "snippets", "dadbod", "buffer" },
+          mysql = { "snippets", "dadbod", "buffer" },
+        },
         providers = {
+          dadbod = { name = "db", module = "vim_dadbod_completion.blink" },
           copilot = {
             name = "copilot",
             module = "blink-cmp-copilot",

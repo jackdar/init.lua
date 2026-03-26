@@ -10,6 +10,7 @@ return {
       function()
         require("conform").format { async = true }
       end,
+      mode = { "n", "x" },
       desc = "[F]ormat buffer",
     },
   },
@@ -29,6 +30,8 @@ return {
       sh = { "shfmt" },
       zsh = { "shfmt" },
       rust = { "rustfmt" },
+      sql = { "sqlfmt" },
+      mysql = { "sqlfmt" },
     },
 
     default_format_opts = {
@@ -36,7 +39,7 @@ return {
     },
 
     format_after_save = function(bufnr)
-      local ignore_filetypes = { "php", "sql", "java" }
+      local ignore_filetypes = { "php", "sql", "mysql", "java" }
       if vim.tbl_contains(ignore_filetypes, vim.bo[bufnr].filetype) then
         return
       end

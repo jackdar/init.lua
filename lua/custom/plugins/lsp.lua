@@ -70,6 +70,7 @@ return {
       bashls = {},
       jdtls = {},
       intelephense = {},
+      sqls = {},
       lua_ls = {
         on_init = function(client)
           if client.workspace_folders then
