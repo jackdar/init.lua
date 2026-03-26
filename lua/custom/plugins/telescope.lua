@@ -24,6 +24,9 @@ return {
       layout_strategy = "flex",
       path_display = { "truncate" },
       pickers = {
+        find_files = {
+          hidden = true,
+        },
         live_grep = {
           additional_args = { "--hidden" },
         },
